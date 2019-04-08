@@ -4,8 +4,6 @@ project(dashel)
 
 export(PACKAGE dashel)
 
-option(BUILD_SHARED_LIBS "Build shared instead of static libs" ON)
-
 # libudev
 find_path(UDEV_INCLUDE_DIR libudev.h)
 find_library(UDEV_LIBS udev)
@@ -49,7 +47,7 @@ else (WIN32)
 	endif (APPLE)
 endif (WIN32)
 
-add_library(dashel ${DASHEL_SOURCES})
+add_library(dashel STATIC ${DASHEL_SOURCES})
 target_link_libraries(dashel ${EXTRA_LIBS})
 
 
